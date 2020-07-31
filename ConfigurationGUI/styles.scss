@@ -1,0 +1,64 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+body{
+    overflow: auto;
+    -webkit-overflow-scrolling:touch !important;
+    overflow-y: scroll !important;
+}
+.jumbotron {
+    padding: 4rem 0.5rem !important;
+}
+
+.mat-expansion-panel-body {
+    padding: 5px !important;
+}
+.mat-select-panel{
+    transform-origin: 50% bottom 0px;
+    font-size: 11px;
+    opacity: 1;
+    // min-width: calc(100% + 162px) !important;
+    transform: scaleY(1);
+    position: absolute;
+    left: 20px !important;
+    min-width: 350px !important;
+}
+// .last-tdata td{
+//     height: 63px !important;
+// }
+.mat-option,.mat-select-value-text {
+    white-space: normal !important;
+    display: inline-table;
+    line-height: 1rem !important;
+}
+
+.mat-select-panel-wrap{
+    position: relative;
+    top: 26px;
+  }
+  
+  .mat-select-panel-wrap .mat-select-panel{
+    position: absolute;
+    min-width: calc(100% + 12px) !important;
+    transform: translateX(-255px) !important;
+    font-size: 11px;
+    width: 350px !important;
+  }
+
+/* 29-july */
+  .mat-expansion-panel-content {
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    padding: 0 35px !important;
+  }
+ #cdk-accordion-child-2{
+    padding: 0px !important;
+  }
+  .jumbotron {
+    padding-top: 0rem !important;
+}
+
+
+.mat-tab-body-wrapper {
+    margin-bottom: 3rem;
+}

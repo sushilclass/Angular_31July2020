@@ -1,0 +1,60 @@
+@import "main-styles";
+@import "property-gui";
+
+/* property-gui - Page */
+
+.mat-cell-name,
+.mat-cell-abbrev,
+.mat-column-abbrev {
+    padding: 3px !important;
+    margin: 0 auto;
+}
+
+.mat-cell-value .matInputNumber {
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+    padding-left: 5px !important;
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+}
+
+.mat-column-name {
+    word-wrap: break-word !important;
+    text-overflow: ellipsis;
+    white-space: nowrap !important;
+    flex: 0 0 25% !important;
+    overflow: hidden;
+    display: block;
+    word-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+.mat-column-value {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 65% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+.mat-column-abbrev {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 10% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}

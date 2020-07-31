@@ -1,0 +1,10 @@
+<div>
+
+    <!--Search bar-->
+    <app-filter-parameters (groupCollapseEvent)="groupCollapse($event)" (applyFilterEvent)="applyFilter($event)" class="cst-left-fix"></app-filter-parameters>
+    <!-- <div class="cst-left-fix" style="align-items: center;">
+    </div> -->
+    <app-element-parameters class="col-mad-12 col-sm-12 col-lg-12 col-xs-12 p-0" [customScroll]="true" [filter]="filter" [panelTitle]="getPanelTitle()" [expansionStates]="expansionStates" [parametersByGroup]="getParametersByGroup()" (setValueEvent)="setValue($event)"
+        (resetValueEvent)="resetValue($event)" (childCollapsedEvent)="childCollapsed($event)" (childExpandedEvent)="childExpanded($event)" (setPanelStateEvent)="setPanelState($event)">
+    </app-element-parameters>
+</div>

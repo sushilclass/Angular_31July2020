@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "servePropertiesGUI",
+			"problemMatcher": [],
+			"label": "npm: servePropertiesGUI",
+			"detail": "ng serve PropertiesGUI --port 4200"
+		}
+	]
+}

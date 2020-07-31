@@ -1,0 +1,22 @@
+<div>
+
+    <!--Row 1-->
+    <app-element-header [imageData]="imageData" [revitdatalength]="revitdatalength" (changeFamilyNameInstanceSelectedEvent)="changeFamilyNameInstanceSelected($event)" [familyInstanceSelectedData]="familyInstanceSelectedData1" [myControl]="myControl" [currentFamilyNameInstanceSelected]="currentFamilyNameInstanceSelected" [circuitDiv]="circuitDiv"></app-element-header>
+
+    <app-edit-type [revitdatalength]="revitdatalength" [revitdatacount]="revitdatacount" [categorySelect]="categorySelect" (editTypeEvent)="editType()"></app-edit-type>
+    <!--Search bar-->
+    <app-filter-parameters (groupCollapseEvent)="groupCollapse($event)" (applyFilterEvent)="applyFilter($event)" class="cst-left-fix"></app-filter-parameters>
+    <!-- <div class="cst-left-fix" style="align-items: center;">
+    </div> -->
+    <app-element-parameters class="col-mad-12 col-sm-12 col-lg-12 col-xs-12 p-0 " [filter]="filter" [customScroll]="true" [panelTitle]="panelTitle" [expansionStates]="expansionStates" [parametersByGroup]="parametersByGroup" (setValueEvent)="setValue($event)"
+        (childCollapsedEvent)="childCollapsed($event)" (childExpandedEvent)="childExpanded($event)" (setPanelStateEvent)="setPanelState($event)" (resetValueEvent)="resetValue($event)"
+        [phases]="phases" [currentPhases]="currentPhases" [currentDataPhase]="currentDataPhase" [phaseId]="phaseId" [phaseDemolish]="phaseDemolish" [currentPhaseDemolish]="currentPhaseDemolish" [phaseDemolishId]="phaseDemolishId" [revitSId]="revitSId" [documentHashCode]="documentHashCode" [elementUniqueId]="elementUniqueId"
+        (phaseDemolishChangeEvent)="phaseDemolishChange($event)" (phaseChangeEvent)="phaseChange($event)" [linkedDetailId]="linkedDetailId" (btnlinkIdEvent)="btnlinkId($event)" [linkedParentId]="linkedParentId" [parentLinkIdShow]="parentLinkIdShow" (btnlinkParentIdEvent)="btnlinkParentId($event)" (setValueListEvent)="setValueList($event)">
+    </app-element-parameters>
+    <!-- Linked details Elements -->
+    <!-- <app-linked-detail-element *ngIf="parentLinkIdShow !== true" [linkedDetailId]="linkedDetailId" (btnlinkIdEvent)="btnlinkId($event)">
+    </app-linked-detail-element> -->
+    <!-- Linked parent Elements-->
+    <!-- <app-linked-parent [linkedParentId]="linkedParentId" [parentLinkIdShow]="parentLinkIdShow" (btnlinkParentIdEvent)="btnlinkParentId($event)">        
+    </app-linked-parent> -->
+</div>

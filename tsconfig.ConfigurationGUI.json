@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/ConfigurationGUI",
+    "types": []
+  },
+  "include": [
+    "ConfigurationGUI/**/*.ts"
+  ],
+  "exclude": [
+    "ConfigurationGUI/test.ts",
+    "ConfigurationGUI/**/*.spec.ts"
+  ]
+}

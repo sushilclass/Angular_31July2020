@@ -1,0 +1,332 @@
+<mat-tab-group (selectedTabChange)="tabChanged($event)">
+    <mat-tab label="Configuration">
+        <div class="scrollable-table">
+            <mat-expansion-panel expanded="true">
+                <mat-expansion-panel-header>
+                    Model(s) with Mechanical Equipment
+                </mat-expansion-panel-header>
+                <!-- Disply List of Models -->
+                <ng-container *ngFor="let document of documentsName; let i=index">
+                    <mat-checkbox value="{{document.Name}}" [checked]="document.Checked" (change)="onCheckboxChangeModel($event,i)">
+                        {{document.Name}}</mat-checkbox><br />
+                </ng-container>
+            </mat-expansion-panel>
+            <mat-expansion-panel expanded="true">
+                <mat-expansion-panel-header>
+                    Phase Created
+                </mat-expansion-panel-header>
+                <mat-expansion-panel *ngFor="let phase of getPhases(); let phaseIndex = index" expanded="true">
+                    <mat-expansion-panel-header>
+                        <ng-container>
+                            <mat-checkbox (change)="phase.Checked = !phase.Checked" color="primary" [checked]="phase.Checked">
+                                {{phase.Name}}
+                            </mat-checkbox>
+                        </ng-container>
+                    </mat-expansion-panel-header>
+                    <mat-expansion-panel expanded="true">
+                        <mat-expansion-panel-header>
+                            Phase Demolished
+                        </mat-expansion-panel-header>
+                        <!-- Demolished Name -->
+                        <ng-container *ngFor="let demolishedPhase of phase.DemolishedPhases; let demolishedPhaseIndex=index">
+                            <mat-checkbox [checked]="demolishedPhase.Checked" value="{{demolishedPhase.Name}}" (change)="onCheckboxChangeDemolished($event,phaseIndex,demolishedPhaseIndex)">{{demolishedPhase.Name}}</mat-checkbox><br />
+                        </ng-container>
+                    </mat-expansion-panel>
+                </mat-expansion-panel>
+                <!-- <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-checkbox color="primary" [checked]="existPhaseCheck">
+              {{existPhaseValue}}
+            </mat-checkbox>
+          </mat-expansion-panel-header>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              Phase Demolished
+            </mat-expansion-panel-header>
+            <ng-container *ngFor="let demolishedExist of phaseValueExist; let i=index;">
+              <mat-checkbox [checked]="demolishedExist.Checked" value="{{demolishedExist.Name}}"
+                (change)="onCheckboxChangeExistDemolish($event,i)">{{demolishedExist.Name}}</mat-checkbox><br />
+            </ng-container>
+          </mat-expansion-panel>
+      
+        </mat-expansion-panel> -->
+            </mat-expansion-panel>
+        </div>
+
+    </mat-tab>
+    <mat-tab label="Mechanical Coordination Tool Links">
+        <mat-expansion-panel expanded="true">
+            <mat-expansion-panel-header>
+                Mechanical Coordination Tool Links
+            </mat-expansion-panel-header>
+            <!-- Disply Mechanical Coordination Tool Links -->
+            <ng-container>
+                <div style="text-align: center;">
+                    <button mat-raised-button name="updateAll" color="primary" style="font-size: 12px; margin-bottom:20px;" (click)="allRecalculate()">
+            Update/Re-Calculate All Changes
+          </button>
+                </div>
+
+                  <div class="table-responsive fix-table-hd">
+                    <table class="table table-bordered my-table mb-0">
+                    <thead>
+                      <tr class="top-headings">
+                          <th class="main-head-tag">Mechanical Equipment</th>
+                          <th class="main-head-tag">Electrical Fixtures</th>
+                          <th class="main-head-tag">Control Equipment</th>
+                      </tr>
+                  </thead>
+                  </table>
+                  </div> 
+
+
+                <div class="scrollable-tablesss">
+
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="mct-table-wrapper text-center">
+
+                                <div class="table-responsive">
+                                    <table class="table table-bordered my-table">
+                                        <thead>
+                                          <!---->
+
+                                          <!-- <tr class="data-heading large-view">
+                                            <th class="col-tag main-head-tag-new border-top">Mechanical Equipment</th>
+                                            <th class="family-tag border-0 border-top"></th>
+                                            <th class="subcomponent-tag border-0 border-top"></th>
+                                            <th class="element-tag border-0 border-top"></th>
+                                            <th class="do-not border-0 border-top"></th>
+
+                                            <th class="col-tag main-head-tag-new border-top">Electrical Fixtures</th>
+                                            <th class="col-tag border-0 border-top"></th>
+                                            <th class="family-tag border-0 border-top"></th>
+                                            <th class="element-tag border-0 border-top"></th>
+                                            <th class="do-not border-0 border-top"></th>
+
+                                            <th class="element-tag main-head-tag-new border-top border-right">Control Equipment</th>
+                                            <th class="family-tag border-0 border-top"></th>
+                                            <th class="element-tag border-0 border-top"></th>
+                                            <th class="element-tag border-0 border-top border-right"></th>
+                                        </tr> -->
+                                          <!---->
+                                          <tr class="data-heading">
+                                            <th class="col-tag">Tag Name</th>
+                                            <th class="family-tag">Family Name and Type</th>
+                                            <th class="subcomponent-tag">Subcomponent</th>
+                                            <th class="element-tag">Element ID</th>
+                                            <th class="do-not">Do Not Coordinate</th>
+
+                                            <th class="col-tag"></th>
+                                            <th class="col-tag">Subscript</th>
+                                            <th class="family-tag">Family Name and Type</th>
+                                            <th class="element-tag">Element ID</th>
+                                            <th class="do-not"></th>
+
+                                            <th class="element-tag">Panel Name</th>
+                                            <th class="family-tag">Family Name and Type</th>
+                                            <th class="element-tag">Element ID</th>
+                                            <th class="element-tag"></th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr *ngFor="let datacommon of getCommonData(); let i = index" class="data-items">
+                                            <td class="col-tag" (click)="getMechanicalId($event, i, datacommon.MechanicalEquipmentUniqueID)">{{datacommon.MechanicalEquipmentTagName}}</td>
+                                            <td class="family-tag" (click)="getMechanicalId($event, i, datacommon.MechanicalEquipmentUniqueID)">{{datacommon.MechanicalEquipmentName}} - {{datacommon.MechanicalEquipmentType}}</td>
+                                            <td class="subcomponent-tag" (click)="getMechanicalId($event, i, datacommon.MechanicalEquipmentUniqueID)">{{datacommon.SubComponent}}</td>
+                                            <td class="element-tag" (click)="getMechanicalId($event, i, datacommon.MechanicalEquipmentUniqueID)">{{datacommon.MechanicalEquipmentID}}</td>
+                                            <td class="do-not">
+                                                <mat-checkbox [checked]="datacommon.DoNotCoordinate" (change)="onCheckBoxChangeMechanical($event, i, datacommon.MechanicalEquipmentUniqueID + '+' + datacommon.ElectricalConnectionUniqueID)">
+                                                </mat-checkbox>
+                                            </td>
+                                            <!--second data-->
+
+                                            <td class="col-tag">
+                                              <div *ngIf="datacommon.IsUpdate == false">
+                                                  <button id="btnupdate" [disabled]="datacommon.IsUpdate == false" (click)="setUpdateData(datacommon.ElectricalConnectionUniqueID, i)" style="border: none; background: none;">
+                          <img src="assets/images/update-icon.png"  width="24" height="24">                                   
+                          </button>
+                                              </div>
+                                              <div *ngIf="datacommon.IsUpdate == true">
+                                                  <button id="btnupdate" [disabled]="datacommon.IsUpdate == false" (click)="setUpdateData(datacommon.ElectricalConnectionUniqueID, i)" style="border: none; background: none;">
+                          <img src="assets/images/update-icon.png"  width="24" height="24" class="img-opacity">                                  
+                          </button>
+                                              </div>
+                                          </td>
+                                          <td class="col-tag"  (click)="getElectricalId($event, i, datacommon.ElectricalConnectionUniqueID)">{{datacommon.Subscript}}</td>
+                                          <td class="family-tag" (click)="getElectricalId($event, i, datacommon.ElectricalConnectionUniqueID)">{{datacommon.Name}} - {{datacommon.Type}}</td>
+                                          <td class="element-tag"(click)="getElectricalId($event, i, datacommon.ElectricalConnectionUniqueID)">{{datacommon.Id}}</td>
+                                          <td class="do-not">
+                                              <mat-select (selectionChange)="setElectricalScript(i, $event)">
+                                                  <div class="ele-fix">
+                                                      <mat-option title="{{eleitem.Subscript}} - {{eleitem.Name}} - {{eleitem.Type}} - {{eleitem.Id}}" value="{{eleitem.Name}} - {{eleitem.Type}} - {{eleitem.Id}} - {{eleitem.ElectricalConnectionUniqueID}}" *ngFor="let eleitem of getElectricalScript(i)">
+                                                          {{eleitem.Subscript}} - {{eleitem.Name}} - {{eleitem.Type}}
+                                                      </mat-option>
+                                                  </div>
+                                              </mat-select>
+                                          </td>
+                                          <!--third-->
+                                          <td  class="element-tag" (click)="getControlEqipId($event, i, datacommon.ControllingDeviceUniqueID)">{{datacommon.ControllingDevicePanelName}}</td>
+                                          <td  class="family-tag" (click)="getControlEqipId($event, i, datacommon.ControllingDeviceUniqueID)">{{datacommon.ControllingDeviceName}} - {{datacommon.ControllingDeviceType}}</td>
+                                          <td class="element-tag" (click)="getControlEqipId($event, i, datacommon.ControllingDeviceUniqueID)">{{datacommon.ControllingDeviceID}}</td>
+                                          <td  class="element-tag">
+                                              <div class="cont-eqp">
+                                                  <mat-select (selectionChange)="setControlEquipment(i, $event)">
+                                                      <mat-option title="{{ctrlpanel.ControllingDevicePanelName}} - {{ctrlpanel.ControllingDeviceName}} - {{ctrlpanel.ControllingDeviceType}} - {{ctrlpanel.ControllingDeviceID}}" value="{{ctrlpanel.ControllingDeviceName}} - {{ctrlpanel.ControllingDeviceType}} - {{ctrlpanel.ControllingDeviceID}} - {{datacommon.ControllingDeviceUniqueID}}"
+                                                          *ngFor="let ctrlpanel of getControllingPanel(i)">
+                                                          {{ctrlpanel.ControllingDevicePanelName}} - {{ctrlpanel.ControllingDeviceName}} - {{ctrlpanel.ControllingDeviceType}}
+                                                      </mat-option>
+                                                  </mat-select>
+                                              </div>
+                                          </td>
+                                        </tr>
+
+                                    </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                    </div>
+
+
+                    <!-- <table class="tblmechanicalheight">
+            <tr class="row">
+              <h5 class="headMechanical">Mechanical Equipment</h5>&nbsp;&nbsp;<h5 class="headElectrical">Electrical Fixtures</h5>
+              &nbsp;&nbsp;<h5 class="headControlling">Control Equipment</h5></tr>
+            <tr class="row">
+              <div class="column">
+                <table class="tab1">
+                  <tr >
+                    <th>TAG NAME</th>
+                    <th>Family Name and Type</th>
+                    <th>Subcomponent</th>
+                    <th>Element ID</th>
+                    <th>Do Not Coordinate</th>
+                  </tr>                
+                </table>
+              </div>
+              &nbsp;&nbsp;
+              <div class="column">
+                <table class="tab1">
+                  <tr>
+                    <th>SUBSCRIPT</th>
+                    <th>Family Name and Type</th>
+                    <th>Element ID</th>
+                  </tr>
+                </table>
+              </div>
+              &nbsp;&nbsp;
+              <div class="column">
+                <table class="tab1">
+                  <tr>
+                    <th>Panel Name</th>
+                <th>Family Name and Type</th>
+                <th>Element ID</th>
+                  </tr>
+                </table>
+              </div>
+            </tr>
+
+            <tr height="75px" class="row" *ngFor="let datacommon of getCommonData(); let i = index">
+              <div class="column">
+                <table class="tab1">
+                  <tr>
+                    <td>{{datacommon.MechanicalEquipmentTagName}}</td>
+                    <td>{{datacommon.MechanicalEquipmentName}} - {{datacommon.MechanicalEquipmentType}}</td>
+                    <td>{{datacommon.SubComponent}}</td>
+                    <td>{{datacommon.MechanicalEquipmentID}}</td>
+                    <td>
+                      <mat-checkbox [checked]="datacommon.DoNotCoordinate"
+                        (change)="onCheckBoxChangeMechanical($event, i, datacommon.MechanicalEquipmentUniqueID + '+' + datacommon.ElectricalConnectionUniqueID)">
+                      </mat-checkbox>
+                    </td>
+                  </tr>
+                </table>               
+              </div> &nbsp;&nbsp;
+              <div class="column">
+                <table class="tab1">
+                  <tr>
+                    <td>
+                      <mat-select (selectionChange)="setElectricalScript(i, $event)">
+                        <mat-option title="{{eleitem.Name}} - {{eleitem.Type}} - {{eleitem.Id}}"
+                          value="{{eleitem.Name}} - {{eleitem.Type}} - {{eleitem.Id}} - {{eleitem.ElectricalConnectionUniqueID}}"
+                          *ngFor="let eleitem of getElectricalScript(i)">
+                          {{eleitem.Name}} - {{eleitem.Type}} - {{eleitem.Id}}
+                        </mat-option>
+                      </mat-select>
+                    </td>
+                    <td>{{datacommon.Name}} - {{datacommon.Type}}</td>
+                    <td>{{datacommon.Id}}</td>
+                  </tr>
+                </table>
+              </div> &nbsp;&nbsp;
+              <div class="column">
+                <table class="tab1">
+                  <tr>
+                    <td>
+                      <mat-select (selectionChange)="setControlEquipment(i, $event)">
+                        <mat-option
+                          title="{{ctrlpanel.ControllingDeviceName}} - {{ctrlpanel.ControllingDeviceType}} - {{ctrlpanel.ControllingDeviceID}}"
+                          value="{{ctrlpanel.ControllingDeviceName}} - {{ctrlpanel.ControllingDeviceType}} - {{ctrlpanel.ControllingDeviceID}} - {{datacommon.ControllingDeviceUniqueID}}"
+                          *ngFor="let ctrlpanel of getControllingPanel(i)">
+                          {{ctrlpanel.ControllingDeviceName}} - {{ctrlpanel.ControllingDeviceType}} - {{ctrlpanel.ControllingDeviceID}}
+                        </mat-option>
+                      </mat-select>
+                    </td>
+                    <td>{{datacommon.ControllingDeviceName}} - {{datacommon.ControllingDeviceType}}</td>
+                    <td>{{datacommon.ControllingDeviceID}}</td>
+                  </tr>
+                </table> 
+              </div>
+              
+            </tr>
+            
+          </table> -->
+                </div>
+            </ng-container>
+
+        </mat-expansion-panel>
+    </mat-tab>
+    <mat-tab label="Tagging E-Connection">
+        <mat-expansion-panel expanded="true">
+            <mat-expansion-panel-header>
+                Tagging E-Connection
+            </mat-expansion-panel-header>
+            <ng-container>
+                <div class="row">
+                    <div class="tagdata">
+                        <table class="tab1">
+                            <tr>
+                                <th>Tag List</th>
+                                <th>Family Name and Type</th>
+                                <th>Element ID</th>
+                            </tr>
+                            <tr *ngFor="let elefix of getLinkedElectricalFixture(); let i= index">
+                                <td>
+                                    <mat-select (selectionChange)="setTagcript(i, $event)">
+                                        <mat-option title="{{tagItem.Name}} - {{tagItem.Id}}" value="{{tagItem.Name}} + {{tagItem.Id}}" *ngFor="let tagItem of getTagList(i)">
+                                            {{tagItem.Name}} - {{tagItem.Id}}
+                                        </mat-option>
+                                    </mat-select>
+                                </td>
+                                <td>{{elefix.Name}} - {{elefix.Type}}</td>
+                                <td>{{elefix.Id}}</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </ng-container>
+        </mat-expansion-panel>
+    </mat-tab>
+
+</mat-tab-group><br />
+<div class="row b" *ngIf="tabIndex == 0">
+    <button mat-raised-button (click)="btnSendData()" color="primary" style="font-size: 18px;">Apply >></button>
+</div>
+<!-- <div class="row b" *ngIf="tabIndex == 2">
+    <button mat-raised-button  color="primary" style="font-size: 18px;">Linked >></button>
+  </div> -->

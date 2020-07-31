@@ -1,0 +1,58 @@
+<div class="multi-content element-header align-items-center">
+    <div class=" element-image"  *ngIf="circuitDiv == false">
+        <!-- <img class="inst_all_img" src="https://static.jsbin.com/images/logo.png" /> -->
+        <img [src]="imageData" class="inst_all_img" height="35" width="" *ngIf="showImage()" />
+        
+    </div>
+    
+        <div class=" element-type" *ngIf="circuitDiv == false">
+
+            <ng-container *ngIf="getRevitDataLength() > 1;  then multipleName; else singleName">
+            </ng-container>
+            <ng-template #multipleName>
+                <select class="title-color">
+                    <option>
+                        Multiple Families Selected
+                    </option>
+                </select>
+    
+            </ng-template>
+    
+            <ng-template #singleName>
+    
+                <label style="font-size: 12px;">{{currentFamilyNameInstanceSelected}}</label>
+                <mat-form-field class="element-type-dropdown dropdown drop-1 label-text-cust">
+                    <input type="text" class="label-text-cust" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <div class="label-text-cust" *ngFor="let elename1 of familyInstanceSelectedData | async;">
+                            <div class="element-header-dropdown">
+                                <img class="element-image-dropdown" [src]="imageUrl(elename1[0])" *ngIf="hasImageData(elename1[0])" />
+                                <mat-optgroup class="element-type-dropdown" label="{{elename1[0].FamilyName}}"></mat-optgroup>
+                            </div>
+                            <mat-option style="font-size: 12px;" *ngFor="let elename of elename1" (onSelectionChange)="changeFamilyNameInstanceSelected(elename)" [value]="elename.Name">
+                                {{elename.Name}}
+                            </mat-option>
+                        </div>
+                    </mat-autocomplete>
+                </mat-form-field>
+                
+                <!-- <mat-select disableOptionCentering id="instanceAllSelect" (selectionChange)="changeFamilyNameInstanceSelected($event)" 
+                 class="dropdown drop-1 label-text-cust">
+                 <input type="search" class="search" (keyup)="filterfamilyInstanceSelectedData($event.target.value)">            
+                    <div *ngFor="let elename1 of temp">
+                        <div class="element-header-dropdown">
+                            <img class="element-image-dropdown" [src]="imageUrl(elename1[0])" *ngIf="hasImageData(elename1[0])"/>
+                             <mat-optgroup class="element-type-dropdown" label="{{elename1[0].FamilyName}}"></mat-optgroup>                        
+                        </div>
+                        <mat-option  *ngFor="let elename of elename1" [value]="elename">
+                            {{elename.Name}}
+                        </mat-option>
+                    </div>
+                </mat-select> -->
+    
+                
+            </ng-template>
+        </div>
+    
+    
+</div>

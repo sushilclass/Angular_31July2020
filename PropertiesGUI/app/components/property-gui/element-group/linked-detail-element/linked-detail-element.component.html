@@ -1,0 +1,19 @@
+<mat-accordion *ngIf="linkedDetailId!=null && linkedDetailId.length>0">
+    <mat-expansion-panel class="mat-expansion-panel-system-parameters tab-bg clps-3">
+        <mat-expansion-panel-header>
+            <mat-panel-title class="tab-main-heading">
+                Linked Detail Id(s)
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <table class="mat-elevation-z8" border="1px solid black" align="center" style="width: 90%; text-align: center;">
+            <tbody>
+                <tr *ngFor="let linkButton of linkedDetailId; let i = index">
+                    <td style="text-align: left; font-size: 12;">
+                        {{linkButton.FamilyName}}<br />{{linkButton.FamilyType}}</td>
+                    <td><button id="btlink" value={{linkButton.Id}} (click)="btnlinkId(linkButton.Id, i)">{{linkButton.Id}}</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </mat-expansion-panel>
+</mat-accordion>

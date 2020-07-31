@@ -1,0 +1,147 @@
+<mat-accordion>
+    <!-- [class]="getExpansionPanelClass() " -->
+    <mat-expansion-panel (afterExpand)="topExpanded($event)" (afterCollapse)="topCollapsed($event)" [ngClass]="getExpansionPanelClass()" [expanded]="true">
+        <mat-expansion-panel-header>
+            <mat-panel-title class="tab-main-heading">
+                {{panelTitle}} 
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+    <!-- <div style="background-color: white; text-align: center;">
+        <button id="btnpanel" (click)="findModel()">
+            Find in Model
+        </button>
+    </div>   --> 
+        <mat-accordion *ngFor="let item of parametersByGroupFilter; let i = index">
+            <!-- <mat-expansion-panel [expanded]="_accordianSetting_parameter[i]"
+                (click)="_accordianSetting_parameter[i]=!_accordianSetting_parameter[i]"> -->
+            <mat-expansion-panel (afterExpand)="childExpanded(item)" (afterCollapse)="childCollapsed(item)" [expanded]="isPanelExpanded(item)">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{item.group}}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-table [dataSource]="item.parameters" class="mat-elevation-z8">
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="name">
+                        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                        <mat-cell matTooltip="{{parameter.Name}}" matTooltipShowDelay="400" matTooltipPosition="after" class="mat-cell-name" *matCellDef="let parameter">
+                            {{parameter.Name}}
+                        </mat-cell>
+                        
+                    </ng-container>
+
+                    <!-- Value Column -->
+                    <ng-container matColumnDef="value">
+                        <mat-header-cell *matHeaderCellDef> Value </mat-header-cell>
+                        <mat-cell class="mat-cell-value" *matCellDef="let parameter">
+                            <mat-checkbox #checkbox *ngIf='parameter.showCheckBox' [ngClass]="{'read-only-checkbox': !parameter.isModifiable}" (change)="setValue($event,parameter)" [disabled]="!parameter.isModifiable" [checked]='parameter.isChecked'>
+                            </mat-checkbox>
+                            <input #box class="matInputNumber" *ngIf="parameter.showInputArea" [disabled]="!parameter.isModifiable" (keyup.enter)="setValue($event,parameter)" (focusout)="resetValue($event,parameter)" [type]="parameter.inputType" [value]="parameter.textValue" autocomplete="disabled">
+                            <form *ngIf="parameter.showTextArea" autocomplete="disabled">
+                                <mat-form-field class="matInputTextArea">
+                                    <textarea matInput id="textarea1" (keydown)="triggerFunction($event)" [disabled]="!parameter.isModifiable" (keyup.enter)="setValue($event,parameter)" (focusout)="resetValue($event,parameter)" [type]="parameter.inputType" [value]="parameter.textValue" autocomplete="disabled"></textarea>
+                                </mat-form-field>
+                            </form>
+                            <div *ngIf="parameter.showDropdown">
+                                <select [value] = "parameter.textCurrentValue" (change)="setValueList($event,parameter)">
+                                    <option *ngFor="let datadropdown of parameter.textValue">
+                                        {{datadropdown.Name}}
+                                    </option>
+                                </select>
+                            </div>
+                            
+                        </mat-cell>
+                    </ng-container>
+
+                    <!-- Abbrev Column -->
+                    <ng-container layout="row" matColumnDef="abbrev">
+                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                        <mat-cell class="mat-cell-abbrev" layout="row" *matCellDef="let parameter">
+                            {{parameter.abbrev}} </mat-cell>
+                    </ng-container>
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+            </mat-expansion-panel>
+            <mat-divider></mat-divider>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                   <mat-panel-title>
+                       Phasing
+                   </mat-panel-title>
+                </mat-expansion-panel-header>
+                <table class="mat-elevation-z8" align="center" style="width: 90%; font-size: 12px; text-align: center;">
+                   <tr align="left">
+                       <td>Name</td>
+                       <td>Value</td>
+                       <td>Units</td>
+                   </tr>
+                   <tr align="left">
+                       <td>Phase Created</td>
+                       <td>
+                           <select [value] = "currentPhases" (change)="phaseChange($event)">
+                               <option *ngFor="let phase of phases">
+                                   {{phase.Name}}
+                               </option>
+                           </select>
+                       </td>
+                       <td></td>
+                   </tr>
+                   <tr align="left">
+                       <td>Phase Demolished</td>
+                       <td>
+                           <select [value] = "currentPhaseDemolish" (change)="phaseDemolishChange($event)">
+                               <option *ngFor="let demolish of phaseDemolish">
+                                   {{demolish.Name}}
+                               </option>
+                           </select>
+                       </td>
+                       <td></td>
+                   </tr>
+               </table>     
+            </mat-expansion-panel>   
+        </mat-accordion>
+        <mat-accordion *ngIf="linkedDetailId!=null && linkedDetailId.length>0 && parentLinkIdShow !== true">
+            <mat-expansion-panel class="mat-expansion-panel-system-parameters tab-bg clps-3">
+                <mat-expansion-panel-header>
+                    <mat-panel-title class="tab-main-heading">
+                        Linked Detail Id(s)
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <table class="mat-elevation-z8" border="1px solid black" align="center" style="width: 90%; text-align: center;">
+                    <tbody>
+                        <tr *ngFor="let linkButton of linkedDetailId; let i = index">
+                            <td style="text-align: left; font-size: 12; width: 300px;">
+                                {{linkButton.FamilyName}}<br />{{linkButton.FamilyType}}</td>
+                            <td style="text-align: left; font-size: 12;"><button id="btlink" value={{linkButton.Id}} (click)="btnlinkId(linkButton.Id, i)">{{linkButton.Id}}</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion *ngIf="parentLinkIdShow == true">
+            <mat-expansion-panel class="mat-expansion-panel-system-parameters tab-bg clps-3">
+                <mat-expansion-panel-header>
+                    <mat-panel-title class="tab-main-heading">
+                        Linked Parent Id
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <table class="mat-elevation-z8" border="1px solid black" align="center" style="width: 90%; text-align: center;">
+                    <tbody>
+                        <tr *ngFor="let linkParent of linkedParentId; let i = index">
+                            <td style="text-align: left; font-size: 12; width: 300px;">
+                                {{linkParent.CurrentType.Name}}<br />{{linkParent.CurrentType.FamilyName}}</td>
+                            <td style="text-align: left; font-size: 12; "><button id="btnlink" value={{linkParent.Id}} (click)="btnlinkParentId(linkParent.Id, i)">{{linkParent.Id}}</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </mat-expansion-panel>
+        </mat-accordion>
+                
+       
+    </mat-expansion-panel>
+</mat-accordion>

@@ -1,0 +1,16 @@
+.tab-bg .mat-expansion-panel-header {
+    height: 28px !important;
+    border-radius: 0px !important;
+    background: white !important;
+    font-size: 12px !important;
+    color: #000;
+    border: 1px solid #777;
+}
+.mat-elevation-z8 {
+    width: 100% !important;
+    background: #fff !important;
+}
+
+.mat-elevation-z8 mat-cell {
+    border-color: #efefef !important;
+}

@@ -1,0 +1,60 @@
+<!-- <mat-tab-group>
+  <mat-tab label="Mechanical Coordination">
+    <mat-expansion-panel expanded="true">
+      <mat-expansion-panel-header>
+        Model(s) with Mechanical Equipment
+      </mat-expansion-panel-header>
+      <mat-checkbox>MEPT_SET.rvt</mat-checkbox><br />
+      <mat-checkbox>A_SET.rvt</mat-checkbox><br />
+      <mat-checkbox>B_SET.rvt</mat-checkbox><br />
+    </mat-expansion-panel>
+    <mat-expansion-panel expanded="true">
+      <mat-expansion-panel-header>
+        Phase Created
+      </mat-expansion-panel-header>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header expanded="true">
+          <mat-checkbox color="primary" (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">
+            New Construction
+          </mat-checkbox>
+        </mat-expansion-panel-header>
+        <mat-expansion-panel expanded="true">
+          <mat-expansion-panel-header>
+            Phase Demolished
+          </mat-expansion-panel-header>
+          <mat-checkbox>New Construction</mat-checkbox><br />
+          <mat-checkbox>Existing</mat-checkbox><br />
+          <mat-checkbox>None</mat-checkbox><br />
+        </mat-expansion-panel>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-checkbox color="primary" (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">
+            Existing
+          </mat-checkbox>
+        </mat-expansion-panel-header>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            Phase Demolished
+          </mat-expansion-panel-header>
+          <mat-checkbox>New Construction</mat-checkbox><br />
+          <mat-checkbox>Existing</mat-checkbox><br />
+          <mat-checkbox>None</mat-checkbox><br />
+        </mat-expansion-panel>
+
+      </mat-expansion-panel>
+    </mat-expansion-panel>
+  </mat-tab>
+  <mat-tab label="TBD">
+
+  </mat-tab>
+</mat-tab-group>
+<router-outlet></router-outlet> -->
+
+<app-nav-bar></app-nav-bar>
+<main role="main" class="">
+  <app-alerts></app-alerts> 
+  <router-outlet></router-outlet>
+</main>
+
+

@@ -1,0 +1,42 @@
+@import "main-styles";
+@import "property-gui";
+.element-header {
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-auto-rows: minmax(auto, auto);
+}
+
+.element-image {
+    grid-column: 1 / 2;
+    grid-row: 1;
+}
+
+.element-type {
+    grid-column: 2 / 21;
+    grid-row: 1;
+}
+
+.element-header-dropdown {
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-auto-rows: minmax(auto, auto);
+    background-color: ghostwhite;
+}
+
+.element-image-dropdown {
+    grid-column: 1 / 2;
+    grid-row: 1;
+    margin: 2px;
+}
+
+.element-type-dropdown {
+    grid-column: 2 / 21;
+    grid-row: 1;
+}
+
+.search{
+    width:100% !important;
+    height: 25px !important;
+  }
+  
+  

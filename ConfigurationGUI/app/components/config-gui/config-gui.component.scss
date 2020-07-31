@@ -1,0 +1,232 @@
+div.b {
+    position: absolute;
+    right: 130px;
+  } 
+
+  .tab1{
+    table, th, td {
+      border: 1px solid black;
+      font-size: 10px;
+    }
+  }
+  .ex1{
+    overflow: scroll;
+  }
+  .column {
+    float: left;
+    width: 300px;
+    text-align: center;
+    height: 45px;
+}
+
+.headMechanical {
+  float: left;
+  margin-left: 5%;
+  text-align: center;
+}
+
+.headElectrical {
+  float: left;
+  margin-left: 20%;
+  text-align: center;
+}
+
+.headControlling {
+  float: left;
+  margin-left: 10%;
+  text-align: center;
+}
+.tblmechanicalheight{
+  height: 70%;
+  overflow: auto;
+}
+
+.tagdata{
+  position: relative;  
+  width: 90%;
+  left: 30%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.tag-data th{
+
+  font-size: 10px;
+}
+.last-tdata td{
+
+  font-size: 11px;
+}
+.thead-data{
+
+  text-align:center;
+   font-size: 13px;
+    
+}
+.scrollable-table{
+
+  height:400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+// .cs-height{
+
+//   min-height:1110px;
+//   height:auto;
+// }
+
+.last-tdata td{
+  height:84px;
+}
+
+
+/****** 4-6-2020 ******/
+
+// .mct-table-wrapper table {
+//   // width: 100%;
+//   // table-layout: fixed;
+// }
+.mct-table-wrapper tr.top-headings th {
+  font-size: 13px;
+}
+.mct-table-wrapper .table td, .table th {
+  padding: .25rem;
+}
+
+.mct-table-wrapper tr.data-heading th{
+  font-size: 10px;
+  vertical-align: middle;
+}
+.mct-table-wrapper tr.data-items td{
+  font-size: 11px;
+  vertical-align: middle;
+  // height: 65px;
+}
+
+.mct-table-wrapper .cdk-overlay-container .cdk-overlay-pane{
+  transform: translateX(-25vw) !important;
+  margin-top: 20px !important;
+}
+.mat-select-panel{
+  margin-top: 20px !important;
+  transform: translateX(-19vw) !important;
+}
+// #btnupdate {
+
+//   display:flex;
+// }
+#btnupdate img{
+
+  opacity:0.3;
+  height:18px;
+  width:18px;
+}
+.img-opacity {
+
+  opacity:1 !important;
+}
+.fix-table-hd {
+    // position: absolute;
+    // margin-top: -6px;
+    // width: 100%;
+    // background: #fff;
+    // z-index: 99;
+    // height: 31px;
+    // overflow: hidden;
+}
+.btn-mb-20{
+
+  margin-bottom:20px;
+}
+
+
+
+/* 28-july */
+
+
+@media screen and (min-width:991px){
+
+table.my-table{
+  width: 100%;
+}
+
+table.my-table thead {
+  display: table;
+  width: calc(100% - 17px); 
+}
+
+table.my-table tbody {
+  display: block;
+  max-height: 300px; 
+  overflow-y: scroll; 
+}
+
+table.my-table th,table.my-table td {
+  word-break: break-all; 
+}
+.my-table .main-head-tag{
+  width: 32%;
+}
+.my-table .main-head-tag:nth-child(3){
+  width: 34%;
+}
+.my-table td.col-tag,
+.my-table th.col-tag{
+  width: 3%;
+}
+
+.my-table td.family-tag,
+.my-table th.family-tag{
+  width: 8%;
+}
+
+.my-table td.subcomponent-tag,
+.my-table th.subcomponent-tag{
+  width: 3%;  
+}
+
+.my-table td.element-tag,
+.my-table th.element-tag{
+  width: 5%;
+}
+
+.my-table td.do-not,
+.my-table th.do-not{
+  width: 3%;
+}
+
+// .my-table th.main-head-tag-new{
+//   width: 33.5% !important;
+//       position: absolute !important;
+//       width: 100%;
+//       width: 100px;
+//       height: auto;
+//       font-size: 14px !important;
+//       text-align: left;
+//       height: 100%;
+//       padding: -2%;
+//       padding-bottom: 20px;
+//       bottom: 4%;
+//       border:0px;
+//       border-left: 1px solid #ddd;
+  
+//   }
+
+}
+
+.mat-expansion-panel-content {
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  padding: 0 50px !important;
+}
+
+
+
+
+
+

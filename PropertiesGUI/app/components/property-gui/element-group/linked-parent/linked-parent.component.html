@@ -1,0 +1,19 @@
+<mat-accordion *ngIf="parentLinkIdShow == true">
+    <mat-expansion-panel class="mat-expansion-panel-system-parameters tab-bg clps-3">
+        <mat-expansion-panel-header>
+            <mat-panel-title class="tab-main-heading">
+                Linked Parent Id(s)
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <table class="mat-elevation-z8" border="1px solid black" align="center" style="width: 90%; text-align: center;">
+            <tbody>
+                <tr *ngFor="let linkParent of linkedParentId; let i = index">
+                    <td style="text-align: left; font-size: 12;">
+                        {{linkParent.CurrentType.Name}}</td>
+                    <td><button id="btnlink" value={{linkParent.Id}} (click)="btnlinkParentId(linkParent.Id, i)">{{linkParent.Id}}</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </mat-expansion-panel>
+</mat-accordion>

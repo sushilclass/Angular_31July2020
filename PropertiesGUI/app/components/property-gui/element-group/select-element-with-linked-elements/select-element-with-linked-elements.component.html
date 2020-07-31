@@ -1,0 +1,50 @@
+<div>
+
+    <!--Row 1-->
+    <u style="font-size: 12px;">Selected Element(s)</u>
+    <app-element-header *ngIf="true" [imageData]="imageData" [revitdatalength]="revitdatalength" (changeFamilyNameInstanceSelectedEvent)="changeFamilyNameInstanceSelected($event)" [familyInstanceSelectedData]="familyInstanceSelectedData1" [myControl]="myControl"
+        [currentFamilyNameInstanceSelected]="currentFamilyNameInstanceSelected" [currentFamilyInstanceSelected]="currentFamilyInstanceSelected" [circuitDiv]="circuitDiv"></app-element-header>
+
+    <app-edit-type [revitdatalength]="revitdatalength" [revitdatacount]="revitdatacount" [categorySelect]="categorySelect" (editTypeEvent)="editType()"></app-edit-type>
+    <div *ngIf="linkedId == true">
+        <u style="font-size: 12px;">Linked Element(s)</u>
+        <app-element-header [imageData]="imageDataLinked" [revitdatanew]="revitdatanew" (changeFamilyNameInstanceSelectedEvent)="changeFamilyInstanceLinked($event)" [familyInstanceSelectedData]="familyInstanceLinkedData1" [myControl]="myControlLink" 
+        [currentFamilyNameInstanceSelected]="currentFamilyNameInstanceLinked" [circuitDiv]="circuitDiv"></app-element-header>
+        <app-edit-type [revitdatalength]="revitdatalength" [revitdatacount]="revitdatacount" [categorySelect]="categorySelect" (editTypeEvent)="editType()"></app-edit-type>
+    </div>
+
+
+    <!--Search bar-->
+    <app-filter-parameters (groupCollapseEvent)="groupCollapse($event)" (applyFilterEvent)="applyFilter($event)" class="cst-left-fix"></app-filter-parameters>
+    <!-- <div class="cst-left-fix" style="align-items: center;">
+    </div> -->
+    <mat-accordion>
+        <mat-expansion-panel (afterExpand)="opened($event)" (closed)="closed($event)" [ngClass]="getExpansionPanelClass()" [expanded]="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="tab-main-heading">
+                    All
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-element-parameters class="col-mad-12 col-sm-12 col-lg-12 col-xs-12 p-0 " [filter]="filter" [customScroll]="false" [panelTitle]="'Selected Element(s)'" [expansionStates]="expansionStates" [parametersByGroup]="parametersByGroup" (setValueEvent)="setValue($event)"
+                (childCollapsedEvent)="childCollapsed($event)" (childExpandedEvent)="childExpanded($event)" (setPanelStateEvent)="setPanelState($event)" (resetValueEvent)="resetValue($event)" [phases]="phases" [currentPhases]="currentPhases" [currentDataPhase]="currentDataPhase" [phaseId]="phaseId"
+                [phaseDemolish]="phaseDemolish" [currentPhaseDemolish]="currentPhaseDemolish" [phaseDemolishId]="phaseDemolishId" (phaseDemolishChangeEvent)="phaseDemolishChange($event)" (phaseChangeEvent)="phaseChange($event)" [linkedDetailId]="linkedDetailId" (btnlinkIdEvent)="btnlinkId($event)" 
+                [linkedParentId]="linkedParentId" [parentLinkIdShow]="parentLinkIdShow" (btnlinkParentIdEvent)="btnlinkParentId($event)" (setValueListEvent)="setValueList($event)">
+            </app-element-parameters>
+
+            <app-element-parameters class="col-mad-12 col-sm-12 col-lg-12 col-xs-12 p-0 " *ngIf="showInstanceLinked" [filter]="filter" [customScroll]="false" [panelTitle]="'Linked Parent Element(s)'" [expansionStates]="expansionLinkStates" [parametersByGroup]="parametersLinkedByGroup"
+                (setValueEvent)="setValue($event)" (childCollapsedEvent)="childLinkCollapsed($event)" (childExpandedEvent)="childLinkExpanded($event)" (setPanelStateEvent)="setLinkPanelState($event)" (resetValueEvent)="resetValue($event)" [linkedDetailId]="linkedDetailId" (btnlinkIdEvent)="btnlinkId($event)">
+            </app-element-parameters>
+
+            <!-- <app-element-parameters *ngIf="true" [filter]="filter" class="col-mad-12 col-sm-12 col-lg-12 col-xs-12 p-0 " [_accordianSetting_parameter]="_accordianSetting_parameter" [panelTitle]="'Selected Element(s)'" [parametersByGroup]="parametersByGroup" (setValueEvent)="setValue($event)"
+                (resetValueEvent)="resetValue($event)">
+            </app-element-parameters> -->
+
+            <!-- <app-linked-detail-element [linkedDetailId]="linkedDetailId" (btnlinkIdEvent)="btnlinkId($event)">
+            </app-linked-detail-element>
+            <app-linked-parent [linkedParentId]="linkedParentId" [parentLinkIdShow]="parentLinkIdShow" (btnlinkParentIdEvent)="btnlinkParentId($event)">               
+            </app-linked-parent> -->
+
+        </mat-expansion-panel>
+    </mat-accordion>
+    <!-- Linked details Elements -->
+</div>

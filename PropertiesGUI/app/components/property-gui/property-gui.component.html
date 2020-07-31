@@ -1,0 +1,94 @@
+<div class="container property-gui" id="main-wrapper" *ngIf="propertyGuiNeedSelectionShow == true">
+
+    <mat-card-header>
+        <mat-card-title>{{warningMessage}}</mat-card-title>
+    </mat-card-header>
+</div>
+<mat-card *ngIf="propertyWsErrorShow == true">
+
+    <mat-card-header>
+        <mat-card-title>ERROR</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p>
+            <!-- Something went wrong. -->
+            Loading...  Please wait !!!
+        </p>
+    </mat-card-content>
+</mat-card>
+<div class="property-gui" id="main-wrapper" [hidden]="propertyGuiShow == false">
+    <!--tabs start-->
+    <!--INSTANCE-->
+    <mat-tab-group>
+        <mat-tab label="Instance" class="main-tab-wrapper" style="border-bottom:1px solid #000">
+            <ng-template matTabContent>
+                <mat-tab-group [selectedIndex]="tabIndex" class="mat-tab tab-wrapper tab-secondary" (selectedTabChange)="tabChanged($event)">
+                    <mat-tab label="All" class="main-tab-wrapper-child" *ngIf="showAll == true">
+                        
+                        <app-select-element-with-linked-elements *ngIf="true" [revitdatacount]="revitdatacount" [revitdatalength]="revitdatalength" [imageData]="imageUrl(currentImageDataInstanceSelected)" [imageDataLinked]="imageUrl(currentImageDataInstanceLinked)" [currentFamilyNameInstanceSelected]="currentFamilyNameInstanceSelected"
+                            [myControl]="myControl" [myControlLink]="myControlLink" [currentFamilyNameInstanceLinked]="currentFamilyNameInstanceLinked" [currentFamilyInstanceSelected]="currentFamilyInstanceSelected" [categorySelect]="categorySelect" [linkedDetailId]="linkedDetailId" [familyInstanceSelectedData1]="familyInstanceSelectedData1"
+                            [familyInstanceLinkedData1]="familyInstanceLinkedData1" [instanceSelectedElements]="instanceSelectedElements" (changeFamilyNameInstanceSelectedEvent)="changeFamilyNameInstanceSelected($event)" (changeFamilyInstanceLinkedEvent)="changeFamilyInstanceLinked($event)"
+                            [showInstanceLinked]="showInstanceLinked(element)" (editTypeEvent)="editType()" [parametersByGroup]="parametersByGroup" [parametersLinkedByGroup]="parametersLinkedByGroup" (btnlinkIdEvent)="btnlinkId($event)" (setValueEvent)="setValue($event)" (resetValueEvent)="resetValue($event)" 
+                            [linkedId]="linkedId" [panelTitle]="'Selected Element(s)'" [phases]="phases" [currentPhases]="currentPhases" [currentDataPhase]="currentDataPhase" [phaseId]="phaseId" [phaseDemolish]="phaseDemolish" [currentPhaseDemolish]="currentPhaseDemolish" [phaseDemolishId]="phaseDemolishId"
+                            [revitSId]="revitSId" [documentHashCode]="documentHashCode" [elementUniqueId]="elementUniqueId" (phaseDemolishChangeEvent)="phaseDemolishChange($event)" (phaseChangeEvent)="phaseChange($event)" [circuitDiv]="circuitDiv" [linkedParentId]="linkedParentId" [parentLinkIdShow]="parentLinkIdShow" (btnlinkParentIdEvent)="btnlinkParentId($event)"
+                            (setValueListEvent)="setValueList($event)">
+                        </app-select-element-with-linked-elements>
+                    </mat-tab>
+                    <mat-tab label="Selected Element(s)" class="main-tab-wrapper-child" *ngIf="showInstanceSelected()">
+                        <app-selected-element [revitdatacount]="revitdatacount" [revitdatalength]="revitdatalength" [imageData]="imageUrl(currentImageDataInstanceSelected)" [currentFamilyNameInstanceSelected]="currentFamilyNameInstanceSelected" [myControl]="myControl" [categorySelect]="categorySelect"
+                            [linkedDetailId]="linkedDetailId" [familyInstanceSelectedData1]="familyInstanceSelectedData1" [instanceSelectedElements]="instanceSelectedElements" (changeFamilyNameInstanceSelectedEvent)="changeFamilyNameInstanceSelected($event)"
+                            (editTypeEvent)="editType()" [parametersByGroup]="parametersByGroup" (btnlinkIdEvent)="btnlinkId($event)" (setValueEvent)="setValue($event)" (resetValueEvent)="resetValue($event)" [panelTitle]="'Selected Element(s)'" [phases]="phases" [currentPhases]="currentPhases" 
+                            [currentDataPhase]="currentDataPhase" [phaseId]="phaseId" [phaseDemolish]="phaseDemolish" [currentPhaseDemolish]="currentPhaseDemolish" [phaseDemolishId]="phaseDemolishId" [revitSId]="revitSId" [documentHashCode]="documentHashCode" [elementUniqueId]="elementUniqueId" (phaseDemolishChangeEvent)="phaseDemolishChange($event)" 
+                            (phaseChangeEvent)="phaseChange($event)" [circuitDiv]="circuitDiv" [linkedParentId]="linkedParentId" [parentLinkIdShow]="parentLinkIdShow" (btnlinkParentIdEvent)="btnlinkParentId($event)" (setValueListEvent)="setValueList($event)">
+                        </app-selected-element>
+
+                    </mat-tab>
+                    <mat-tab label="Linked Element(s)" class="main-tab-wrapper-child" *ngIf="showInstanceLinked(element)">
+                        <app-selected-element [revitdatacount]="revitdatacount" [revitdatalength]="revitdatalength" [imageData]="imageUrl(currentImageDataInstanceLinked)" [currentFamilyNameInstanceSelected]="currentFamilyNameInstanceLinked" [myControl]="myControlLink" [categorySelect]="categorySelect"
+                            [linkedDetailId]="linkedDetailId" [familyInstanceSelectedData1]="familyInstanceLinkedData1" [instanceSelectedElements]="instanceSelectedElements" (changeFamilyNameInstanceSelectedEvent)="changeFamilyInstanceLinked($event)" (editTypeEvent)="editType()"
+                            [parametersByGroup]="parametersLinkedByGroup" (btnlinkIdEvent)="btnlinkId($event)" (setValueEvent)="setValue($event)" (resetValueEvent)="resetValue($event)" [panelTitle]="'Linked Parent Element(s)'" [circuitDiv]="circuitDiv" [linkedDetailId]="linkedDetailId" (btnlinkIdEvent)="btnlinkId($event)">
+                        </app-selected-element>
+                    </mat-tab>
+                    <mat-tab label="Systems" class="main-tab-wrapper-child max-h" *ngIf="showElectricalSystem(element)">
+                        <app-element-system [revitdatalength]="revitdatalength" (editTypeEvent)="editType()" [parametersByGroup]="parametersSystemsByGroup" (setValueEvent)="setValue($event)" (resetValueEvent)="resetValue($event)" [panelTitle]="'Systems'"></app-element-system>
+                    </mat-tab>
+                </mat-tab-group>
+            </ng-template>
+        </mat-tab>
+        <!--TYPE-->
+        <mat-tab label="Type" class="main-tab-wrapper">
+            <ng-template matTabContent>
+                <mat-tab-group [selectedIndex]="tabIndex" class="mat-tab tab-wrapper tab-secondary" (selectedTabChange)="tabChanged($event)">
+                    <mat-tab label="All" class="main-tab-wrapper-child" *ngIf="showTypeAll == true">
+                      
+                        <app-select-element-with-linked-elements *ngIf="true" [revitdatacount]="revitdatacount" [revitdatalength]="revitdatalength" [imageData]="imageUrl(currentImageDataInstanceSelected)" [imageDataLinked]="imageUrl(currentImageDataInstanceLinked)" [currentFamilyNameInstanceSelected]="currentFamilyNameInstanceSelected"
+                            [myControl]="myControl" [myControlLink]="myControlLink" [currentFamilyNameInstanceLinked]="currentFamilyNameInstanceLinked" [categorySelect]="categorySelect" [familyInstanceSelectedData1]="familyInstanceSelectedData1" [familyInstanceLinkedData1]="familyInstanceLinkedData1"
+                            [showInstanceLinked]="showTypeLinked()" [instanceSelectedElements]="typeSelectedElements" (changeFamilyNameInstanceSelectedEvent)="changeFamilyNameInstanceSelected($event)" (changeFamilyInstanceLinkedEvent)="changeFamilyInstanceLinked($event)"
+                            (editTypeEvent)="editType()" [parametersByGroup]="parametersTypesByGroup" [parametersLinkedByGroup]="parametersTypesLinkedByGroup" (btnlinkIdEvent)="btnlinkId($event)" (setValueEvent)="setValue($event)" (resetValueEvent)="resetValue($event)"
+                            [linkedId]="linkedId" [panelTitle]="'Selected Element(s)'" [phases]="phases" [currentPhases]="currentPhases" [currentDataPhase]="currentDataPhase" [phaseId]="phaseId" [phaseDemolish]="phaseDemolish" [currentPhaseDemolish]="currentPhaseDemolish" [phaseDemolishId]="phaseDemolishId"
+                            [revitSId]="revitSId" [documentHashCode]="documentHashCode" [elementUniqueId]="elementUniqueId" (phaseDemolishChangeEvent)="phaseDemolishChange($event)" (phaseChangeEvent)="phaseChange($event)" [circuitDiv]="circuitDiv" >
+                           </app-select-element-with-linked-elements>
+                    </mat-tab>
+                    <mat-tab label="Selected Element(s)" class="main-tab-wrapper-child max-h" *ngIf="showTypeSelected(element)">
+                        <app-selected-element [revitdatacount]="revitdatacount" [revitdatalength]="revitdatalength" [imageData]="imageUrl(currentImageDataInstanceSelected)" [currentFamilyNameInstanceSelected]="currentFamilyNameInstanceSelected" [myControl]="myControl" [categorySelect]="categorySelect"
+                            [familyInstanceSelectedData1]="familyInstanceSelectedData1" [instanceSelectedElements]="typeSelectedElements" (changeFamilyNameInstanceSelectedEvent)="changeFamilyNameInstanceSelected($event)" (editTypeEvent)="editType()" [parametersByGroup]="parametersTypesByGroup"
+                            (btnlinkIdEvent)="btnlinkId($event)" (setValueEvent)="setValue($event)" (resetValueEvent)="resetValue($event)" [panelTitle]="'Selected Element(s)'" [phases]="phases" [currentPhases]="currentPhases" [currentDataPhase]="currentDataPhase" [phaseId]="phaseId" [phaseDemolish]="phaseDemolish" 
+                            [currentPhaseDemolish]="currentPhaseDemolish" [phaseDemolishId]="phaseDemolishId" [revitSId]="revitSId" [documentHashCode]="documentHashCode" [elementUniqueId]="elementUniqueId" (phaseDemolishChangeEvent)="phaseDemolishChange($event)" (phaseChangeEvent)="phaseChange($event)" [circuitDiv]="circuitDiv"
+                            >
+                        </app-selected-element>
+                    </mat-tab>
+                    <mat-tab label="Linked Element(s)" class="main-tab-wrapper-child max-h" *ngIf="showTypeLinked()">
+                        <app-selected-element [revitdatacount]="revitdatacount" [revitdatalength]="revitdatalength" [imageData]="imageUrl(currentImageDataInstanceLinked)" [currentFamilyNameInstanceSelected]="currentFamilyNameInstanceLinked" [myControl]="myControlLink" [categorySelect]="categorySelect"
+                            [familyInstanceSelectedData1]="familyInstanceLinkedData1" [instanceSelectedElements]="instanceSelectedElements" (changeFamilyNameInstanceSelectedEvent)="changeFamilyInstanceLinked($event)" (editTypeEvent)="editType()" [parametersByGroup]="parametersTypesLinkedByGroup"
+                            (btnlinkIdEvent)="btnlinkId($event)" (setValueEvent)="setValue($event)" (resetValueEvent)="resetValue($event)" [panelTitle]="'Linked Parent Element(s)'" [circuitDiv]="circuitDiv">
+                        </app-selected-element>
+                    </mat-tab>
+
+                </mat-tab-group>
+            </ng-template>
+        </mat-tab>
+    </mat-tab-group>
+    <!--TYPE-->
+    <!--tabs end-->
+</div>
+<!--body end-->

@@ -1,0 +1,242 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~bootstrap/dist/css/bootstrap.css";
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif !important;
+    overflow: hidden;
+}
+
+* {
+    font-family: 'Lato', sans-serif !important;
+}
+
+.header-wrapper {
+    border: 1px solid #000;
+    border-bottom: 0px;
+    // padding-left: 20px;
+}
+
+.header-wrapper,
+.jumbotron {
+    /* max-width: 400px !important; */
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+    padding: 0px;
+}
+
+
+/* Style debug info in alerts */
+
+.alert-pre {
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: pre-wrap;
+}
+
+.jumbotron {
+    min-height: 100%;
+    height: auto;
+    // border-left: 1px solid #000;
+    // border-right: 1px solid #000;
+    background: #fff;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+    border-top: 0px solid #000;
+    background: #fff !important;
+    overflow: hidden !important;
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+}
+
+#main-wrapper {
+    border: 0px !important;
+}
+
+
+
+/* dropdown */
+
+.mat-select-search-clear {
+    position: absolute;
+    right: 10% !important;
+    top: 5px;
+    font-size: 12px;
+}
+
+.mat-select-panel .mat-optgroup-label,
+.mat-select-panel .mat-option {
+    font-size: 12px !important;
+    border: 1px solid #efefef !important;
+}
+
+.mat-optgroup-label {
+    background: #efefef !important;
+}
+
+
+/* #cdk-overlay-0{
+  top: 195.188px !important;
+}
+#cdk-overlay-4,#cdk-overlay-2{
+  top: 145.188px !important;
+} */
+
+.cdk-overlay-pane {
+    top: 145.391px;
+}
+
+.cdk-overlay-pane-select-search {
+    top: 195.391px !important;
+}
+
+.mat-icon {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.mat-elevation-z8 {
+    width: 100% !important;
+    background: #fff !important;
+}
+
+.mat-elevation-z8 mat-cell {
+    border-color: #efefef !important;
+}
+
+
+/* .property-gui .mat-tab-label{
+  height: 28px;
+  padding: 0px;
+  min-width: auto;
+  opacity: 1;
+  padding: 0% 2.5%;
+  border-left:1px solid #000; 
+  border-top:1px solid #000; 
+  border-bottom:1px solid transparent; 
+  font-size: 12px;
+} */
+
+
+/* .property-gui .mat-tab-label:active,
+.property-gui .mat-tab-label:focus,
+.property-gui .mat-tab-label:visited > .mat-tab-label::after{
+   width: auto !important;
+   border-bottom: 1px solid #fff !important;
+   top: 1px;
+   overflow: hidden !important;
+   border-color:#02518C;
+   border-left:2px solid #02518C; 
+  border-top:2px solid #02518C; 
+  border-right:2px solid #02518C; 
+} */
+
+
+/* .property-gui .mat-tab-label {
+  box-sizing: border-box;lebel-text
+  font-size: inherit;
+  position: relative;
+  vertical-align: middle;
+} */
+
+.label-text-cust {
+   // font-weight: normal;
+    font-size: 12px;
+    color: #000;
+}
+
+
+/* .property-gui .mat-tab-label:hover::after {
+  border-bottom-color: rgba(110, 50, 50, 0.23) !important;
+  border-left-color: rgba(110, 50, 50, 0.23) !important;
+  -webkit-transition: border-color 0s ease-out 0.5s, width 0.25s ease-out 0.5s, height 0.25s ease-out 0.75s;
+  transition: border-color 0s ease-out 0.5s, width 0.25s ease-out 0.5s, height 0.25s ease-out 0.75s;
+} */
+
+
+/* -------------------------------------------- */
+
+
+/* .property-gui .mat-tab-labels{
+  border-bottom: 1px solid #000;
+} */
+
+.property-gui .tab-secondary {
+    padding: 0% !important;
+}
+
+.property-gui mat-header-cell:first-of-type,
+.property-gui mat-cell:first-of-type {
+    padding-left: 6px;
+    padding-right: 2px;
+}
+
+.property-gui mat-header-cell:last-of-type,
+.property-gui mat-cell:last-of-type {
+    padding-right: 6px;
+    padding-right: 2px;
+    text-align: center;
+}
+
+.property-gui mat-cell:last-of-type {
+    text-align: left;
+}
+
+.mat-row {
+    height: auto !important;
+    min-height: auto !important;
+}
+
+.property-gui .mat-column-value {
+    width: 30% !important;
+}
+
+
+/* .tab-bg{
+  background: rgba(129, 127, 127, 0.23) !important;
+  border-radius: 0px !important;
+} */
+
+.tab-main-heading {
+    color: #000 !important;
+    font-size: 12px !important;
+}
+
+.mat-expansion-panel {
+    background: rgba(129, 127, 127, 0.23) !important;
+    border-radius: 0px !important;
+    color: #000;
+    font-size: 12px !important;
+}
+
+.tab-bg .mat-expansion-panel-header {
+    height: 28px !important;
+    border-radius: 0px !important;
+    background: white !important;
+    font-size: 12px !important;
+    color: #000;
+    border: 1px solid #777;
+}
+
+.mat-header-row {
+    height: 25px !important;
+    min-height: auto !important;
+}
+
+.max-h {
+    max-height: 800px !important;
+    /* overflow: auto !important; */
+}
+
+.inst_all_img,
+.mat-optgroup-label img {
+    margin: 0 0.5rem !important;
+    max-height: 30px;
+    width: auto !important;
+}

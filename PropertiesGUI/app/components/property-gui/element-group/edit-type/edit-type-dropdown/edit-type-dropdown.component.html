@@ -1,0 +1,19 @@
+<div>
+    <ng-container *ngIf="revitdatalength > 1;  then multipleCount; else singleCount">
+    </ng-container>
+    <ng-template #multipleCount style="background: #fff;">
+        <select class="edit-type-dropdown">
+            <option value="0">Common ({{revitdatalength}})</option>
+            <option *ngFor="let summary of revitdatacount" value={{summary}}>
+                {{summary}}
+            </option>
+        </select>
+    </ng-template>
+    <ng-template #singleCount style="background: #fff;">
+        <select class="edit-type-dropdown ">
+            <option>
+                {{categorySelect}} ({{revitdatalength}})
+            </option>
+        </select>
+    </ng-template>
+</div>

@@ -1,0 +1,181 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~bootstrap/dist/css/bootstrap.css";
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif !important;
+    overflow: hidden;
+}
+
+* {
+    font-family: 'Lato', sans-serif !important;
+}
+
+.container {
+    max-width: 540px !important;
+    padding: 0px !important;
+}
+
+
+/* Style debug info in alerts */
+
+.alert-pre {
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: pre-wrap;
+}
+
+.jumbotron {
+    padding: 0rem !important;
+}
+
+
+/* property-gui - Page */
+
+.property-gui .row {
+    max-width: 491px !important;
+    padding: 0px !important;
+    margin: 0 auto;
+}
+
+.property-gui .mat-tab-label {
+    height: 28px;
+    padding: 0px;
+    min-width: auto;
+    opacity: 1;
+    padding: 0% 2.5%;
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid transparent;
+    font-size: 12px;
+}
+
+.property-gui .mat-tab-label:last-of-type {
+    border-right: 1px solid #000;
+}
+
+.property-gui .mat-tab-label:active,
+.property-gui .mat-tab-label:focus,
+.property-gui .mat-tab-label:visited>.mat-tab-label::after {
+    width: auto !important;
+    border-bottom: 1px solid #fff !important;
+    top: 1px;
+    overflow: hidden !important;
+    border-color: #02518C;
+    border-left: 2px solid #02518C;
+    border-top: 2px solid #02518C;
+    border-right: 2px solid #02518C;
+}
+
+.property-gui .mat-tab-label-active {
+    background: #efefef !important;
+    color: #444 !important;
+}
+
+.property-gui .mat-tab-labels {
+    border-bottom: 1px solid #000;
+}
+
+.property-gui .mat-tab-header {
+    background: #fff;
+    border-bottom: 0px;
+}
+
+.property-gui .mat-ink-bar {
+    display: none !important;
+}
+
+.property-gui .mat-tab-labels {
+    display: block;
+}
+
+.property-gui .mat-tab-group {
+    padding: 0px 1%;
+}
+
+.property-gui .tab-secondary {
+    padding: 1% 2% !important;
+}
+
+.property-gui .mat-select-value-text,
+.mat-select-value {
+    color: #827b7b !important;
+}
+
+.property-gui .mat-tab-header-pagination {
+    display: none !important;
+}
+
+
+/*collapse*/
+
+.mat-tab-body-content {
+    overflow: hidden !important;
+}
+
+
+/* .tab-bg{
+  background: rgba(129, 127, 127, 0.23) !important;
+  border-radius: 0px !important;
+} */
+
+.tab-main-heading {
+    color: #000 !important;
+    font-size: 12px !important;
+}
+
+.mat-expansion-panel {
+    background: rgba(129, 127, 127, 0.23) !important;
+    border-radius: 0px !important;
+    color: #000;
+    font-size: 12px !important;
+}
+
+.tab-bg .mat-expansion-panel-header {
+    height: 34px !important;
+    border-radius: 0px !important;
+    background: rgba(110, 50, 50, 0.23) !important;
+    font-size: 12px !important;
+    color: #000;
+}
+
+.mat-expansion-panel.mat-expansion-panel-element-child-parameters.mat-expansion-panel-linked-parameters.tab-bg.mat-expansion-panel {
+    box-shadow: none !important;
+}
+
+.clps-1 .mat-expansion-panel {
+    background: rgba(110, 50, 50, 0.23) !important;
+}
+
+.clps-1 .mat-expansion-panel-header {
+    background: rgba(110, 50, 50, 0.23) !important;
+}
+
+mat-expansion-panel-header {
+    /* background: #efefef !important; */
+    border-radius: 0px !important;
+}
+
+.mat-cell {
+    font-size: 11px !important;
+}
+
+@media only screen and (max-width: 767px) {
+    .container {
+        max-width: 767px !important;
+    }
+    .property-gui .mat-tab-header-pagination {
+        display: none !important;
+    }
+    .property-gui .mat-tab-label {
+        height: 21px;
+        padding: 0px;
+        padding: 0% 1.5%;
+        font-size: 12px;
+    }
+}
