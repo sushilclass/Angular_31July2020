@@ -39,7 +39,7 @@
         "jwt-decode": "^2.2.0",
         "mat-select-filter": "^2.3.0",
         "microsoft-adal-angular6": "^1.3.0",
-        "moment-timezone": "^0.5.28",
+        "moment-timezone": "^0.5.35",
         "ngx-mat-select-search": "^2.2.0",
         "ngx-webstorage-service": "^4.1.0",
         "path": "^0.12.7",
